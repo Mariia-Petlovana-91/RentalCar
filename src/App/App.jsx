@@ -13,6 +13,12 @@ import {
   useDispatch,
 } from 'react-redux';
 
+import {
+  getCars,
+  getCarById,
+  getBrands,
+} from '../api/api';
+
 const Loader = lazy(() =>
   import(
     '../components/base/Loader/Loader'
@@ -42,6 +48,11 @@ const NotFound = lazy(() =>
 import Layout from '../components/base/Layout/Layout';
 
 export default function App() {
+  getCars();
+  getCarById(
+    '11a3ab35-07b8-4336-b06b-602cdc309f2c',
+  );
+  getBrands();
   const isLoad = false;
   return (
     <>
