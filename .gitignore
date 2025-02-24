@@ -22,3 +22,14 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+
+# import { SlLocationPin } from "react-icons/sl"; location
+# import { IoHeartOutline } from "react-icons/io5"; heart
+# import { BsChevronUp } from "react-icons/bs"; drop up
+# import { BsChevronDown } from "react-icons/bs"; dropDown
+# import { BsCalendar2Week } from "react-icons/bs"; calendar
+# import { BsFuelPump } from "react-icons/bs"; fuel pump
+# import { BsCarFront } from "react-icons/bs"; car
+# import { BsGear } from "react-icons/bs"; setting
+# import { HiOutlineCheckCircle } from "react-icons/hi2"; check
