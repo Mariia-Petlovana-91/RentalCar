@@ -17,9 +17,7 @@ body {
   );
   font-family: Manrope;
 }
-.tle {
-  color: #0b44cd;
-}
+
 h1,
 h2,
 h3,
@@ -53,4 +51,68 @@ img {
   display: block;
   max-width: 100%;
   height: auto;
+}
+
+.btn {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.25;
+  text-align: center;
+  border-radius: 12px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.primaryBtn {
+  min-width: 156px;
+  color: var(
+    --whiteOriginColor
+  );
+  background-color: var(
+    --accentColor
+  );
+}
+
+.primaryBtn:hover,
+.primaryBtn:focus {
+  background-color: var(
+    --hoverColor
+  );
+}
+
+.secondaryBtn {
+  min-width: 156px;
+  color: var(--darkColor);
+  border: 1px solid
+    var(--accentColor);
+}
+
+.secondaryBtn:hover,
+.secondaryBtn:focus {
+  border: var(--hoverColor);
+}
+
+.primaryTitle {
+  font-weight: 700;
+  font-size: 60px;
+  line-height: 1.2;
+  color: var(
+    --whiteOriginColor
+  );
+  text-align: center;
+}
+
+.secondaryTitle {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  text-align: center;
+}
+
+.thirdTitle {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  color: var(--darkColor);
+  text-align: center;
 }
