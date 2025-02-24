@@ -17,7 +17,9 @@ body {
   );
   font-family: Manrope;
 }
-
+.tle {
+  color: #0b44cd;
+}
 h1,
 h2,
 h3,
