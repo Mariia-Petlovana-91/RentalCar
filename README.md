@@ -14,7 +14,7 @@ RentalCar — це
 
 ## 🔗 Демо
 
-- [Деплой на Vercel](#https://rental-car-silk.vercel.app)
+- [Деплой на Vercel #https://rental-car-silk.vercel.app]()
 - [Репозиторій на GitHub](#https://github.com/Mariia-Petlovana-91/RentalCar)
 
 ## 📜 Основний функціонал
