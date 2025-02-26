@@ -6,18 +6,20 @@ import {
   getCarsThunk,
 } from './operation';
 
-INITIAL_STATE = {
+const INITIAL_STATE = {
   cars: null,
   brands: null,
+  car: null,
   isLoad: false,
   error: null,
 };
 
-const contactsSlice =
-  createSlice({
+const carsSlice = createSlice(
+  {
     name: 'cars',
-    initialState:
+    initialState: {
       INITIAL_STATE,
+    },
     extraReducers: (
       builder,
     ) => {
@@ -33,17 +35,13 @@ const contactsSlice =
         .addCase(
           getBrandsThank.fulfilled,
           (state, action) => {
-            console.log(
-              'Updating contacts in state:',
-              action.payload,
-            );
             (state.isLoading = false),
               (state.brands =
                 action.payload);
           },
         )
         .addCase(
-          apiGetContacts.rejected,
+          getBrandsThank.rejected,
           (state, action) => {
             (state.isLoading = false),
               (state.error =
@@ -51,7 +49,7 @@ const contactsSlice =
           },
         )
         .addCase(
-          apiPostContact.pending,
+          getCarsThunk.pending,
           (state) => {
             (state.isLoading = true),
               (state.error =
@@ -59,16 +57,15 @@ const contactsSlice =
           },
         )
         .addCase(
-          apiPostContact.fulfilled,
+          getCarsThunk.fulfilled,
           (state, action) => {
             (state.isLoading = false),
-              state.contacts.push(
-                action.payload,
-              );
+              (state.cars =
+                action.payload);
           },
         )
         .addCase(
-          apiPostContact.rejected,
+          getCarsThunk.rejected,
           (state, action) => {
             state.isLoading = false;
             state.error =
@@ -76,7 +73,7 @@ const contactsSlice =
           },
         )
         .addCase(
-          apiDeleteContact.pending,
+          getCarByIdThank.pending,
           (state) => {
             (state.isLoading = true),
               (state.error =
@@ -84,45 +81,23 @@ const contactsSlice =
           },
         )
         .addCase(
-          apiDeleteContact.fulfilled,
+          getCarByIdThank.fulfilled,
           (state, action) => {
             state.isLoading = false;
-            state.contacts =
-              state.contacts.filter(
-                (contact) =>
-                  contact.id !==
-                  action
-                    .payload
-                    .id,
-              );
+            state.car =
+              action.payload;
           },
         )
         .addCase(
-          apiDeleteContact.rejected,
+          getCarByIdThank.rejected,
           (state, action) => {
             (state.isLoading = false),
               (state.error =
                 action.payload);
           },
-        )
-        .addCase(
-          apiLogOutUser.fulfilled,
-          (state) => {
-            (state.contacts =
-              null),
-              (state.error =
-                null);
-          },
         );
     },
-  });
+  },
+);
 
-const contactsReducer =
-  contactsSlice.reducer;
-
-export default contactsReducer;
-export {
-  apiGetContacts,
-  apiPostContact,
-  apiDeleteContact,
-};
+export default carsSlice.reducer;

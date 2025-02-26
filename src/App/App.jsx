@@ -19,11 +19,7 @@ import {
   getBrands,
 } from '../api/api';
 
-const Loader = lazy(() =>
-  import(
-    '../components/base/Loader/Loader'
-  ),
-);
+import Loader from '../components/base/Loader/Loader';
 const Home = lazy(() =>
   import(
     '../pages/Home/Home'

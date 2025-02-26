@@ -39,10 +39,5 @@ const favoritesSlice =
       },
     },
   });
-export const {
-  addFavorite,
-  removeFavorite,
-  setFavorites,
-} = favoritesSlice.actions;
 
-export default favoritesSlice;
+export default favoritesSlice.reducer;

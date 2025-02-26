@@ -12,26 +12,26 @@ import {
 
 import storage from 'redux-persist/lib/storage';
 
-const likeConfig = {
-  key: 'like',
+const favoritesConfig = {
+  key: 'favorites',
   storage,
-  whitelist: ['isLike'],
+  whitelist: [
+    'favoritesArray',
+  ],
 };
 
-import authReducer from './auth/slice';
-import filtersReducer from './filters/slice';
-import contactsReducer from './contacts/slice';
+import favoritesReducer from './favourite/slice';
+import carsReducer from './cars/slice';
 
 export const store =
   configureStore({
     reducer: {
-      carsData:
+      favoritesData:
         persistReducer(
-          likeConfig,
-          carsReducer,
+          favoritesConfig,
+          favoritesReducer,
         ),
-      filtersData:
-        filtersReducer,
+      carsData: carsReducer,
     },
     middleware: (
       getDefaultMiddleware,
