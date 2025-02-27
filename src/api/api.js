@@ -12,9 +12,8 @@ export const getCars = async (
   const { data } =
     await catalogInstance.get(
       '/cars',
-      { params },
+      params,
     );
-  console.log(data);
   return data;
 };
 
@@ -24,7 +23,6 @@ export const getCarById =
       await catalogInstance.get(
         `/cars/${id}`,
       );
-    console.log(data);
     return data;
   };
 
@@ -34,6 +32,5 @@ export const getBrands =
       await catalogInstance.get(
         '/brands',
       );
-    console.log(data);
     return data;
   };

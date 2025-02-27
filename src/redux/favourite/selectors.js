@@ -2,9 +2,8 @@ export const selectFavoriteItems =
   (state) =>
     state.favrites.array;
 
-export const selectIsFavourite =
-  (carId, state) => {
-    return state.favrites.array.includes(
+export const selectIsFavorite =
+  (carId) => (state) =>
+    state.favorites.array.includes(
       carId,
     );
-  };

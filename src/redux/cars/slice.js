@@ -1,5 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-
 import {
   getBrandsThank,
   getCarByIdThank,
@@ -7,19 +6,21 @@ import {
 } from './operation';
 
 const INITIAL_STATE = {
-  cars: null,
-  brands: null,
+  cars: [],
+  page: 1,
+  totalPages: 1,
+  totalCars: 0,
   car: null,
-  isLoad: false,
+  brands: null,
+  isLoading: false,
   error: null,
 };
 
 const carsSlice = createSlice(
   {
     name: 'cars',
-    initialState: {
+    initialState:
       INITIAL_STATE,
-    },
     extraReducers: (
       builder,
     ) => {
@@ -27,41 +28,62 @@ const carsSlice = createSlice(
         .addCase(
           getBrandsThank.pending,
           (state) => {
-            (state.isLoading = true),
-              (state.error =
-                null);
+            state.isLoading = true;
+            state.error =
+              null;
           },
         )
         .addCase(
           getBrandsThank.fulfilled,
           (state, action) => {
-            (state.isLoading = false),
-              (state.brands =
-                action.payload);
+            state.isLoading = false;
+            state.brands =
+              action.payload;
           },
         )
         .addCase(
           getBrandsThank.rejected,
           (state, action) => {
-            (state.isLoading = false),
-              (state.error =
-                action.payload);
+            state.isLoading = false;
+            state.error =
+              action.payload;
           },
         )
+
         .addCase(
           getCarsThunk.pending,
           (state) => {
-            (state.isLoading = true),
-              (state.error =
-                null);
+            state.isLoading = true;
+            state.error =
+              null;
           },
         )
         .addCase(
           getCarsThunk.fulfilled,
           (state, action) => {
-            (state.isLoading = false),
-              (state.cars =
-                action.payload);
+            const {
+              cars,
+              page,
+              totalPages,
+              totalCars,
+            } =
+              action.payload;
+
+            if (page > 1) {
+              state.cars = [
+                ...state.cars,
+                ...cars,
+              ];
+            } else {
+              state.cars =
+                cars;
+            }
+
+            state.page = page;
+            state.totalPages =
+              totalPages;
+            state.totalCars =
+              totalCars;
           },
         )
         .addCase(
@@ -72,12 +94,13 @@ const carsSlice = createSlice(
               action.payload;
           },
         )
+
         .addCase(
           getCarByIdThank.pending,
           (state) => {
-            (state.isLoading = true),
-              (state.error =
-                null);
+            state.isLoading = true;
+            state.error =
+              null;
           },
         )
         .addCase(
@@ -91,9 +114,9 @@ const carsSlice = createSlice(
         .addCase(
           getCarByIdThank.rejected,
           (state, action) => {
-            (state.isLoading = false),
-              (state.error =
-                action.payload);
+            state.isLoading = false;
+            state.error =
+              action.payload;
           },
         );
     },

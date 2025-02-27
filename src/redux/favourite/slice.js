@@ -7,9 +7,8 @@ const INITIAL_STATE = {
 const favoritesSlice =
   createSlice({
     name: 'favorites',
-    initialState: {
+    initialState:
       INITIAL_STATE,
-    },
     reducers: {
       addFavorite(
         state,
