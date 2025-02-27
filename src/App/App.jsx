@@ -13,8 +13,10 @@ import {
   useDispatch,
 } from 'react-redux';
 
-import Loader from '../components/base/Loader/Loader';
+// import Loader from '../components/base/Loader/Loader';
 import Layout from '../components/base/Layout/Layout';
+
+import { selectIsLoading } from '../redux/cars/selectors';
 
 const Home = lazy(() =>
   import(
@@ -37,12 +39,27 @@ const NotFound = lazy(() =>
   ),
 );
 
+const Loader = lazy(() =>
+  import(
+    '../components/base/Loader/Loader'
+  ),
+);
+
 export default function App() {
-  const isLoad = false;
+  const isLoadadind =
+    useSelector(
+      selectIsLoading,
+    );
+
+  console.log(
+    'isLoad:',
+    isLoadadind,
+  );
+
   return (
     <>
       <Layout>
-        {!isLoad ? (
+        {isLoadadind ? (
           <Loader />
         ) : null}
         <Suspense>
@@ -75,7 +92,6 @@ export default function App() {
           </Routes>
         </Suspense>
       </Layout>
-
       <Toaster
         position="bottom-right"
         reverseOrder={false}

@@ -1,24 +1,24 @@
 export const selectCars = (
   state,
-) => state.cars.cars;
+) => state.carsData.cars;
 export const selectPage = (
   state,
-) => state.cars.page;
+) => state.carsData.page;
 export const selectTotalPages =
   (state) =>
-    state.cars.totalPages;
+    state.carsData.totalPages;
 export const selectTotalCars =
   (state) =>
-    state.cars.totalCars;
+    state.carsData.totalCars;
 export const selectCar = (
   state,
-) => state.cars.car;
+) => state.carsData.car;
 export const selectBrands = (
   state,
-) => state.cars.brands;
+) => state.carsData.brands;
 export const selectIsLoading =
   (state) =>
-    state.cars.isLoading;
+    state.carsData.isLoading;
 export const selectError = (
   state,
-) => state.cars.error;
+) => state.carsData.error;
