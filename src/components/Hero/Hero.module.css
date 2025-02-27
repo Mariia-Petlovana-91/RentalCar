@@ -1,0 +1,40 @@
+.hero {
+  width: 100%;
+  height: 100vh;
+  background-image: url('../../img/Hero_1x_desk.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  align-content: center;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+scrollbar {
+  display: none;
+}
+
+@media (-webkit-min-device-pixel-ratio: 2),
+  (min-resolution: 192dpi) {
+  .hero {
+    background-image: url('../../img/Hero_2x_Desk.jpg');
+  }
+}
+
+.heroText {
+  margin-bottom: 40px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 1.3;
+  text-align: center;
+  color: var(
+    --whiteOriginColor
+  );
+}
+
+.heroBtn {
+  margin: auto;
+  display: block;
+  max-width: 276px;
+}

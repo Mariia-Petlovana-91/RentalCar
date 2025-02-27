@@ -1,10 +1,13 @@
-import css from './Layout.module.css';
+import Header from '../../Header/Header';
 
 const Layout = ({
   children,
 }) => {
   return (
-    <div>{children}</div>
+    <div>
+      <Header />
+      {children}
+    </div>
   );
 };
 

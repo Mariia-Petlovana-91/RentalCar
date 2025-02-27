@@ -1,0 +1,27 @@
+.navList {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.navItem {
+  margin-right: 32px;
+}
+.navItem:last-child {
+  margin-right: 0px;
+}
+.navLink {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--darkColor);
+  transition: color 0.3s ease;
+}
+
+.navLink:hover,
+.navLink:focus {
+  color: var(--hoverColor);
+}
+.navActive {
+  color: var(--hoverColor);
+}
