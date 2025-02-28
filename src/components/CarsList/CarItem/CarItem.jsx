@@ -8,7 +8,6 @@ const CarItem = ({
   brand,
   model,
   year,
-
   rentalPrice,
   address,
   rentalCompany,

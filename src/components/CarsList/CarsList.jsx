@@ -48,9 +48,7 @@ const CarsList = ({
           </li>
         ))
       ) : (
-        <NothingFound
-          error={error}
-        />
+        <NothingFound />
       )}
     </ul>
   );

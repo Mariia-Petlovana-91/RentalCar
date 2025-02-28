@@ -10,7 +10,8 @@ const NothingFound = () => {
           css.nothingText
         }
       >
-        Sorry, Try again
+        🤷‍♂️ Sorry... an error
+        occurred.Try again
         later, or contact
         support.
       </p>

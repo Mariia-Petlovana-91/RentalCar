@@ -1,5 +1,19 @@
 .nothing {
+  width: 100%;
+  height: 100%;
+  border-radius: 24px;
+  background-color: var(
+    --darkColor
+  );
+  padding: 48px;
 }
 
 .nothingText {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 1.2;
+  text-align: center;
+  color: var(
+    --whiteOriginColor
+  );
 }
