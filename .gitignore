@@ -25,7 +25,7 @@ dist-ssr
 
 
 # import { SlLocationPin } from "react-icons/sl"; location
-# import { IoHeartOutline } from "react-icons/io5"; heart
+#  heart
 # import { BsChevronUp } from "react-icons/bs"; drop up
 # import { BsChevronDown } from "react-icons/bs"; dropDown
 # import { BsCalendar2Week } from "react-icons/bs"; calendar

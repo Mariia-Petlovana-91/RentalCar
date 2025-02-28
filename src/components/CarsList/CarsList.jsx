@@ -14,20 +14,36 @@ const CarsList = ({
     selectError,
   );
   return (
-    <ul>
+    <ul
+      className={css.carList}
+    >
       {Array.isArray(array) &&
       array.length !== 0 ? (
         array.map((ar) => (
           <li
             className={
-              css.contact__item
+              css.carItem
             }
             key={ar.id}
           >
             <CarItem
-            // name={ar.name}
-            // number={ar.number}
-            // id={ar.id}
+              img={ar.img}
+              brand={ar.brand}
+              model={ar.model}
+              year={ar.year}
+              rentalPrice={
+                ar.rentalPrice
+              }
+              rentalCompany={
+                ar.rentalCompany
+              }
+              address={
+                ar.address
+              }
+              type={ar.type}
+              mileage={
+                ar.mileage
+              }
             />
           </li>
         ))

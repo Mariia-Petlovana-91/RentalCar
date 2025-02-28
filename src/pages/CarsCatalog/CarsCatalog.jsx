@@ -32,6 +32,7 @@ const CarsCatalog = () => {
   const cars = useSelector(
     selectCars,
   );
+  console.log(cars);
   const brands = useSelector(
     selectBrands,
   );
@@ -46,12 +47,13 @@ const CarsCatalog = () => {
   );
 
   useEffect(() => {
-    // Викликаємо getCarsThunk через dispatch
     dispatch(getCarsThunk());
     dispatch(
       getBrandsThunk(),
     );
   }, [dispatch]);
+
+  function onLoadMore() {}
 
   if (error)
     return <NothingFound />;
@@ -63,6 +65,9 @@ const CarsCatalog = () => {
           array={cars}
         />
       </Container>
+      <LoadMore
+        onClick={onLoadMore}
+      />
     </Section>
   );
 };
