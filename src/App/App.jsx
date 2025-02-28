@@ -51,18 +51,16 @@ export default function App() {
       selectIsLoading,
     );
 
-  console.log(
-    'isLoad:',
-    isLoadadind,
-  );
-
   return (
     <>
       <Layout>
-        {isLoadadind ? (
-          <Loader />
-        ) : null}
-        <Suspense>
+        <Suspense
+          fallback={
+            isLoadadind ? (
+              <Loader />
+            ) : null
+          }
+        >
           <Routes>
             <Route
               path="/"

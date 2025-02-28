@@ -32,7 +32,7 @@ export const getCarsThunk =
     },
   );
 
-export const getCarByIdThank =
+export const getCarByIdThunk =
   createAsyncThunk(
     'cars/getCarsById',
     async (
@@ -56,12 +56,13 @@ export const getCarByIdThank =
     },
   );
 
-export const getBrandsThank =
+export const getBrandsThunk =
   createAsyncThunk(
     'brands/getBrands',
-    async ({
-      rejectWithValue,
-    }) => {
+    async (
+      _,
+      { rejectWithValue },
+    ) => {
       try {
         const array =
           await getBrands();

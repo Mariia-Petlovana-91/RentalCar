@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 import {
-  getBrandsThank,
-  getCarByIdThank,
+  getBrandsThunk,
+  getCarByIdThunk,
   getCarsThunk,
 } from './operation';
 
 const INITIAL_STATE = {
-  cars: [],
+  cars: null,
   page: 1,
   totalPages: 1,
   totalCars: 0,
@@ -26,7 +26,7 @@ const carsSlice = createSlice(
     ) => {
       builder
         .addCase(
-          getBrandsThank.pending,
+          getBrandsThunk.pending,
           (state) => {
             state.isLoading = true;
             state.error =
@@ -34,7 +34,7 @@ const carsSlice = createSlice(
           },
         )
         .addCase(
-          getBrandsThank.fulfilled,
+          getBrandsThunk.fulfilled,
           (state, action) => {
             state.isLoading = false;
             state.brands =
@@ -42,7 +42,7 @@ const carsSlice = createSlice(
           },
         )
         .addCase(
-          getBrandsThank.rejected,
+          getBrandsThunk.rejected,
           (state, action) => {
             state.isLoading = false;
             state.error =
@@ -96,7 +96,7 @@ const carsSlice = createSlice(
         )
 
         .addCase(
-          getCarByIdThank.pending,
+          getCarByIdThunk.pending,
           (state) => {
             state.isLoading = true;
             state.error =
@@ -104,7 +104,7 @@ const carsSlice = createSlice(
           },
         )
         .addCase(
-          getCarByIdThank.fulfilled,
+          getCarByIdThunk.fulfilled,
           (state, action) => {
             state.isLoading = false;
             state.car =
@@ -112,7 +112,7 @@ const carsSlice = createSlice(
           },
         )
         .addCase(
-          getCarByIdThank.rejected,
+          getCarByIdThunk.rejected,
           (state, action) => {
             state.isLoading = false;
             state.error =
