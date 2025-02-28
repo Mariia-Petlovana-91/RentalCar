@@ -3,9 +3,7 @@ import { RotatingLines } from 'react-loader-spinner';
 
 const Loader = () => {
   return (
-    <div
-      className={css.loader}
-    >
+    <div className={css.loader}>
       <RotatingLines
         strokeColor="#3470ff"
         visible={true}

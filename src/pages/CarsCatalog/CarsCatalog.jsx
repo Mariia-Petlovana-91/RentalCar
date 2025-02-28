@@ -24,50 +24,41 @@ import SearchForm from '../../components/CarsList/SearchForm/SearchForm';
 import CarsList from '../../components/CarsList/CarsList';
 import LoadMore from '../../components/base/LoadMore/LoadMore';
 import NothingFound from '../../components/base/NothingFound/NothingFound';
+import { IoReturnDownBack } from 'react-icons/io5';
 
 const CarsCatalog = () => {
-  const dispatch =
-    useDispatch();
+  const dispatch = useDispatch();
 
-  const cars = useSelector(
-    selectCars,
-  );
+  const cars = useSelector(selectCars);
   console.log(cars);
-  const brands = useSelector(
-    selectBrands,
+  const brands = useSelector(selectBrands);
+
+  const totalPages = useSelector(
+    selectTotalPages,
   );
 
-  const totalPages =
-    useSelector(
-      selectTotalPages,
-    );
-
-  const error = useSelector(
-    selectError,
-  );
+  const error = useSelector(selectError);
 
   useEffect(() => {
     dispatch(getCarsThunk());
-    dispatch(
-      getBrandsThunk(),
-    );
+    dispatch(getBrandsThunk());
   }, [dispatch]);
 
   function onLoadMore() {}
 
-  if (error)
-    return <NothingFound />;
   return (
     <Section>
       <Container>
-        <SearchForm />
-        <CarsList
-          array={cars}
-        />
+        {error ? (
+          <NothingFound error={error} />
+        ) : (
+          <>
+            <SearchForm />
+            <CarsList array={cars} />
+            <LoadMore onClick={onLoadMore} />
+          </>
+        )}
       </Container>
-      <LoadMore
-        onClick={onLoadMore}
-      />
     </Section>
   );
 };

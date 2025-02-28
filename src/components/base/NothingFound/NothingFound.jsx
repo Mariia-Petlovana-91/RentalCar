@@ -1,19 +1,12 @@
 import css from '../NothingFound/NothingFound.module.css';
 
-const NothingFound = () => {
+const NothingFound = ({ error }) => {
   return (
-    <div
-      className={css.nothing}
-    >
-      <p
-        className={
-          css.nothingText
-        }
-      >
-        🤷‍♂️ Sorry... an error
-        occurred.Try again
-        later, or contact
-        support.
+    <div className={css.nothing}>
+      <p className={css.nothingText}>
+        🤷‍♂️ Sorry... an error occurred, or nothing found. Try again later, or contact support.
+        <br />
+        <span className={css.nothingError}>EROR:{error}</span>
       </p>
     </div>
   );

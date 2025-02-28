@@ -1,9 +1,10 @@
-import { IoHeartOutline } from 'react-icons/io5';
-
-import css from '../CarItem/CarItem.module.css';
+import React, { useState, useEffect } from 'react';
+import { IoHeartSharp, IoHeartOutline } from 'react-icons/io5';
 import clsx from 'clsx';
+import css from '../CarItem/CarItem.module.css';
 
 const CarItem = ({
+  id,
   img,
   brand,
   model,
@@ -14,63 +15,75 @@ const CarItem = ({
   type,
   mileage,
 }) => {
-  const newAddress =
-    address.split(',');
+  const [favoriteItems, setFavoriteItems] = useState(
+    JSON.parse(localStorage.getItem('favoriteItems')) || [],
+  );
+
+  useEffect(() => {
+    if (Array.isArray(favoriteItems)) {
+      localStorage.setItem(
+        'favoriteItems',
+        JSON.stringify(favoriteItems),
+      );
+      console.log('Saved to localStorage:', favoriteItems);
+    }
+  }, [favoriteItems]);
+
+  const isFavorite = favoriteItems.includes(id);
+
+  const toggleItem = (item) => {
+    const updatedFavorites = isFavorite
+      ? favoriteItems.filter((i) => i !== item)
+      : [...favoriteItems, item];
+
+    setFavoriteItems(updatedFavorites);
+    console.log('Updated Favorites:', updatedFavorites);
+  };
+
+  const newAddress = address.split(',');
   const city = newAddress[1];
-  const country =
-    newAddress[2];
-  const newMileage =
-    mileage.toLocaleString(
-      'uk-UA',
-    );
+  const country = newAddress[2];
+  const newMileage = mileage.toLocaleString('uk-UA');
 
   return (
     <>
-      <div>
-        <img
-          src={img}
-          alt={brand}
-        />
+      <div className={css.itemImgContainer}>
+        <img src={img} alt={brand} className={css.itemImg} />
         <button
           type="button"
-          className={clsx(
-            'btn',
-          )}
+          className={css.itemIconBtn}
+          onClick={() => toggleItem(id)}
         >
-          <IoHeartOutline />
+          {isFavorite ? (
+            <IoHeartSharp
+              className={clsx(css.itemIcon, css.itemIconIsFavourite)}
+            />
+          ) : (
+            <IoHeartOutline
+              className={clsx(css.itemIcon, css.itemIconNotFavourite)}
+            />
+          )}
         </button>
       </div>
-      <div>
-        <h3>
-          {brand}{' '}
-          <span>{model}</span>{' '}
+      <div className={css.itemTitleContainer}>
+        <h4 className={css.itemTitlte}>
+          {brand} <span className={css.itemModel}>{model}</span>{' '}
           {year}
-        </h3>
-        <p>{rentalPrice}</p>
-      </div>
-      <div>
-        <p>
-          |{'  '}
-          {city}
-          {'  '}|{'  '}
-          {country}
-          {'   '}|{'  '}
-          {rentalCompany}
-          {'  '}|
-        </p>
-        <p>
-          | {type} |{' '}
-          {newMileage} {'km'}{' '}
-          |
+        </h4>
+        <p className={css.itemTitlte}>
+          {'$'}
+          {rentalPrice}
         </p>
       </div>
-      <button
-        type="button"
-        className={clsx(
-          'btn',
-          'primaryBtn',
-        )}
-      >
+      <div className={css.itemAbout}>
+        <p className={css.itemAboutText}>
+          | {city} | {country} | {rentalCompany} |
+        </p>
+        <p className={css.itemAboutText}>
+          | {type} | {newMileage} {'km'} |
+        </p>
+      </div>
+      <button type="button" className={clsx('btn', 'primaryBtn')}>
         Read more
       </button>
     </>

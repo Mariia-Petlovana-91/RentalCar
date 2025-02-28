@@ -5,8 +5,5 @@ export const onActiveClass = (
   defaultClass,
   active,
 ) => {
-  return clsx(
-    defaultClass,
-    isActive && active,
-  );
+  return clsx(defaultClass, isActive && active);
 };

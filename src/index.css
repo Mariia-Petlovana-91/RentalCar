@@ -8,7 +8,7 @@
   --whiteOriginColor: #ffffff;
   --backgroundColorSecondary: #f7f7f7;
   --boxShadow: 0px 4px 8px
-    rgba(175, 193, 231, 0.2);
+    rgba(82, 97, 129, 0.2);
 }
 
 body {
@@ -48,6 +48,7 @@ button {
   outline: none;
   cursor: pointer;
   display: block;
+  background-color: transparent;
 }
 
 img {
@@ -64,7 +65,7 @@ img {
   border-radius: 12px;
   padding-top: 12px;
   padding-bottom: 12px;
-  transition: box-shadow 300ms
+  transition: box-shadow 0.3s
     cubic-bezier(
       0.4,
       0,
@@ -83,7 +84,13 @@ img {
 .primaryBtn {
   width: 100%;
   transition: background-color
-    0.3s ease;
+    0.3s
+    cubic-bezier(
+      0.4,
+      0,
+      0.2,
+      1
+    );
   color: var(
     --whiteOriginColor
   );
@@ -101,7 +108,13 @@ img {
 
 .secondaryBtn {
   transition: border-color
-    0.3s ease;
+    0.3s
+    cubic-bezier(
+      0.4,
+      0,
+      0.2,
+      1
+    );
   min-width: 156px;
   color: var(--darkColor);
   border: 1px solid
@@ -110,7 +123,9 @@ img {
 
 .secondaryBtn:hover,
 .secondaryBtn:focus {
-  border: var(--hoverColor);
+  border-color: var(
+    --hoverColor
+  );
 }
 
 .primaryTitle {

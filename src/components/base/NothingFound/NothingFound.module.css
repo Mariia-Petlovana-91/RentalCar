@@ -17,3 +17,7 @@
     --whiteOriginColor
   );
 }
+
+.nothingError {
+  color: red;
+}
