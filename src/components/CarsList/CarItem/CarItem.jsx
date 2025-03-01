@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { NavLink } from 'react-router-dom';
 import { IoHeartSharp, IoHeartOutline } from 'react-icons/io5';
 import clsx from 'clsx';
 import css from '../CarItem/CarItem.module.css';
@@ -19,6 +20,12 @@ const CarItem = ({
     JSON.parse(localStorage.getItem('favoriteItems')) || [],
   );
 
+  const newAddress = address.split(',');
+  const city = newAddress[1];
+  const country = newAddress[2];
+  const newMileage = mileage.toLocaleString('uk-UA');
+  const isFavorite = favoriteItems.includes(id);
+
   useEffect(() => {
     if (Array.isArray(favoriteItems)) {
       localStorage.setItem(
@@ -28,20 +35,15 @@ const CarItem = ({
     }
   }, [favoriteItems]);
 
-  const isFavorite = favoriteItems.includes(id);
+  const toggleItem = (id) => {
+    setFavoriteItems((prevFavorites) =>
+      prevFavorites.includes(id)
+        ? prevFavorites.filter((item) => item !== id)
+        : [...prevFavorites, id],
+    );
 
-  const toggleItem = (item) => {
-    const updatedFavorites = isFavorite
-      ? favoriteItems.filter((i) => i !== item)
-      : [...favoriteItems, item];
-
-    setFavoriteItems(updatedFavorites);
+    window.location.reload();
   };
-
-  const newAddress = address.split(',');
-  const city = newAddress[1];
-  const country = newAddress[2];
-  const newMileage = mileage.toLocaleString('uk-UA');
 
   return (
     <>
@@ -81,9 +83,12 @@ const CarItem = ({
           | {type} | {newMileage} {'km'} |
         </p>
       </div>
-      <button type="button" className={clsx('btn', 'primaryBtn')}>
+      <NavLink
+        to={`/catalog${id}`}
+        className={clsx('btn', 'primaryBtn', css.navBtn)}
+      >
         Read more
-      </button>
+      </NavLink>
     </>
   );
 };

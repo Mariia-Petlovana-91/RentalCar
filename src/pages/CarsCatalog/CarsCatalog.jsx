@@ -37,7 +37,7 @@ const CarsCatalog = () => {
   }, [dispatch, page]);
 
   function onLoadMore() {
-    if (page < totalPages && !isLoading) {
+    if (page < totalPages) {
       setPage((prevPage) => prevPage + 1);
     }
   }
@@ -51,7 +51,7 @@ const CarsCatalog = () => {
           <>
             <SearchForm brands={brands} />
             <CarsList array={cars} />
-            {page >= totalPages ? (
+            {page >= totalPages && !isLoading ? (
               <NotItem />
             ) : (
               <LoadMore onClick={onLoadMore} />
