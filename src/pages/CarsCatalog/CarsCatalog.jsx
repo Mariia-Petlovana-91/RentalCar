@@ -1,11 +1,5 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
-import {
-  useDispatch,
-  useSelector,
-} from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 import {
   getCarsThunk,
@@ -14,37 +8,39 @@ import {
 
 import {
   selectCars,
-  selectBrands,
   selectTotalPages,
   selectError,
+  selectIsLoading,
+  selectBrands,
 } from '../../redux/cars/selectors';
+
 import Section from '../../components/base/Section/Section';
 import Container from '../../components/base/Container/Container';
-import SearchForm from '../../components/CarsList/SearchForm/SearchForm';
+import SearchForm from '../../components/SearchForm/SearchForm';
 import CarsList from '../../components/CarsList/CarsList';
-import LoadMore from '../../components/base/LoadMore/LoadMore';
-import NothingFound from '../../components/base/NothingFound/NothingFound';
-import { IoReturnDownBack } from 'react-icons/io5';
+import LoadMore from '../../components/LoadMore/LoadMore';
+import NotItem from '../../components/NotItem/NotItem';
+import NothingFound from '../../components/NothingFound/NothingFound';
 
 const CarsCatalog = () => {
   const dispatch = useDispatch();
-
-  const cars = useSelector(selectCars);
-  console.log(cars);
+  const [page, setPage] = useState(1);
   const brands = useSelector(selectBrands);
-
-  const totalPages = useSelector(
-    selectTotalPages,
-  );
-
+  const cars = useSelector(selectCars);
+  const totalPages = useSelector(selectTotalPages);
+  const isLoading = useSelector(selectIsLoading);
   const error = useSelector(selectError);
 
   useEffect(() => {
-    dispatch(getCarsThunk());
+    dispatch(getCarsThunk({ page }));
     dispatch(getBrandsThunk());
-  }, [dispatch]);
+  }, [dispatch, page]);
 
-  function onLoadMore() {}
+  function onLoadMore() {
+    if (page < totalPages && !isLoading) {
+      setPage((prevPage) => prevPage + 1);
+    }
+  }
 
   return (
     <Section>
@@ -53,9 +49,13 @@ const CarsCatalog = () => {
           <NothingFound error={error} />
         ) : (
           <>
-            <SearchForm />
+            <SearchForm brands={brands} />
             <CarsList array={cars} />
-            <LoadMore onClick={onLoadMore} />
+            {page >= totalPages ? (
+              <NotItem />
+            ) : (
+              <LoadMore onClick={onLoadMore} />
+            )}
           </>
         )}
       </Container>

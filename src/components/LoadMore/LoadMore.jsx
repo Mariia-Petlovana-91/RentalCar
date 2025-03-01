@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import css from '../LoadMore/LoadMore.module.css';
+import css from './LoadMore.module.css';
 
 const LoadMore = ({ onClick }) => {
   return (

@@ -6,13 +6,20 @@ import { getCars, getCarById, getBrands } from '../../api/api';
 
 export const getCarsThunk = createAsyncThunk(
   'cars/getCars',
-  async (params, { rejectWithValue }) => {
+  async (params = {}, thunkAPI) => {
     try {
-      const data = await getCars(params);
+      const defaultParams = {
+        page: 1,
+        limit: 12,
+      };
+
+      const requestParams = { ...defaultParams, ...params };
+      const data = await getCars(requestParams);
+
       return data;
     } catch (error) {
-      toast.error('Upss not found cars.😔 Try again later.');
-      return rejectWithValue(error.message);
+      toast.error('Upss, not found cars.😔 Try again later.');
+      return thunkAPI.rejectWithValue(error.message);
     }
   },
 );

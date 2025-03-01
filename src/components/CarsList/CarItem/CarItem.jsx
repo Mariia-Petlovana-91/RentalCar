@@ -25,7 +25,6 @@ const CarItem = ({
         'favoriteItems',
         JSON.stringify(favoriteItems),
       );
-      console.log('Saved to localStorage:', favoriteItems);
     }
   }, [favoriteItems]);
 
@@ -37,7 +36,6 @@ const CarItem = ({
       : [...favoriteItems, item];
 
     setFavoriteItems(updatedFavorites);
-    console.log('Updated Favorites:', updatedFavorites);
   };
 
   const newAddress = address.split(',');

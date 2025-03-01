@@ -5,7 +5,7 @@ const catalogInstance = axios.create({
 });
 
 export const getCars = async (params = {}) => {
-  const { data } = await catalogInstance.get('/cars', params);
+  const { data } = await catalogInstance.get('/cars', { params });
   return data;
 };
 

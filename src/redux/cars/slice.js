@@ -6,14 +6,13 @@ import {
 } from './operation';
 
 const INITIAL_STATE = {
-  cars: null,
-  page: 1,
-  totalPages: 1,
-  totalCars: 0,
+  cars: [],
+  totalPages: 0,
   car: null,
   brands: null,
   isLoading: false,
   error: true,
+  price: ["30","40","50","60","70","80","90","100","110"],
 };
 
 const carsSlice = createSlice({
@@ -39,18 +38,19 @@ const carsSlice = createSlice({
         state.error = null;
       })
       .addCase(getCarsThunk.fulfilled, (state, action) => {
-        const { cars, page, totalPages, totalCars } = action.payload;
+        state.isLoading = false;
+        const { cars, totalPages } = action.payload;
 
-        if (page > 1) {
+        if (
+          state.cars.length === 0 ||
+          state.cars[0].id !== cars[0].id
+        ) {
           state.cars = [...state.cars, ...cars];
-        } else {
-          state.cars = cars;
         }
 
-        state.page = page;
         state.totalPages = totalPages;
-        state.totalCars = totalCars;
       })
+
       .addCase(getCarsThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
