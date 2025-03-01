@@ -1,8 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { IoHeartSharp, IoHeartOutline } from 'react-icons/io5';
 import clsx from 'clsx';
 import css from '../CarItem/CarItem.module.css';
+
+import { toggleFavorite } from '../../../redux/favourite/slice';
+import { selectFavoriteItems } from '../../../redux/favourite/selectors';
 
 const CarItem = ({
   id,
@@ -16,34 +19,13 @@ const CarItem = ({
   type,
   mileage,
 }) => {
-  const [favoriteItems, setFavoriteItems] = useState(
-    JSON.parse(localStorage.getItem('favoriteItems')) || [],
-  );
-
+  const dispatch = useDispatch();
+  const favoriteItems = useSelector(selectFavoriteItems);
   const newAddress = address.split(',');
   const city = newAddress[1];
   const country = newAddress[2];
   const newMileage = mileage.toLocaleString('uk-UA');
   const isFavorite = favoriteItems.includes(id);
-
-  useEffect(() => {
-    if (Array.isArray(favoriteItems)) {
-      localStorage.setItem(
-        'favoriteItems',
-        JSON.stringify(favoriteItems),
-      );
-    }
-  }, [favoriteItems]);
-
-  const toggleItem = (id) => {
-    setFavoriteItems((prevFavorites) =>
-      prevFavorites.includes(id)
-        ? prevFavorites.filter((item) => item !== id)
-        : [...prevFavorites, id],
-    );
-
-    window.location.reload();
-  };
 
   return (
     <>
@@ -52,7 +34,7 @@ const CarItem = ({
         <button
           type="button"
           className={css.itemIconBtn}
-          onClick={() => toggleItem(id)}
+          onClick={() => dispatch(toggleFavorite(id))}
         >
           {isFavorite ? (
             <IoHeartSharp
