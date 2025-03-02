@@ -66,11 +66,12 @@ const CarItem = ({
         </p>
       </div>
       <NavLink
-        to={`/catalog${id}`}
+        to={`/catalog/${id}`}
         className={clsx('btn', 'primaryBtn', css.navBtn)}
       >
         Read more
       </NavLink>
+      ;
     </>
   );
 };
