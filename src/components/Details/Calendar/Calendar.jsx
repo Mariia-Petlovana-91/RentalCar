@@ -1,5 +1,3 @@
-import css from './Calendar.module.css';
-
 import React, { useState } from 'react';
 import {
   addMonths,
@@ -12,7 +10,11 @@ import {
   addDays,
   isSameMonth,
   isToday,
+  isBefore,
 } from 'date-fns';
+
+import clsx from 'clsx';
+import css from './Calendar.module.css';
 
 import {
   MdOutlineChevronLeft,
@@ -21,6 +23,7 @@ import {
 
 const Calendar = () => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const today = new Date();
 
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
   const prevMonth = () => setCurrentMonth(subMonths(currentMonth, 1));
@@ -42,13 +45,21 @@ const Calendar = () => {
   return (
     <div className={css.calendarContainer}>
       <div className={css.calendarHeader}>
-        <button onClick={prevMonth} className={css.calendarBtn}>
+        <button
+          type="button"
+          onClick={prevMonth}
+          className={css.calendarBtn}
+        >
           <MdOutlineChevronLeft className={css.calendarIcon} />
         </button>
-        <h2 className="calendar-title">
+        <h2 className={css.calendarTitle}>
           {format(currentMonth, 'MMMM yyyy')}
         </h2>
-        <button onClick={nextMonth} className={css.calendarBtn}>
+        <button
+          type="button"
+          onClick={nextMonth}
+          className={css.calendarBtn}
+        >
           <MdOutlineChevronRight className={css.calendarIcon} />
         </button>
       </div>
@@ -63,13 +74,15 @@ const Calendar = () => {
         {renderDays().map((day, index) => (
           <div
             key={index}
-            className={`css.calendar-day ${
-              isToday(day) ? 'calendar-today' : ''
-            } ${
+            className={clsx(
+              css.calendarDay,
+              isToday(day) && css.calendarToday,
               isSameMonth(day, currentMonth)
-                ? 'calendar-current-month'
-                : 'calendar-other-month'
-            }`}
+                ? css.calendarCurrentMonth
+                : css.calendarOtherMonth,
+              css.calendarHover,
+              isBefore(day, today) && css.calendarDisabled,
+            )}
           >
             {format(day, 'd')}
           </div>

@@ -1,22 +1,62 @@
 .calendarContainer {
+  width: 286px;
+  height: 284px;
+  border: 1px solid var(--accentColor);
 }
 
 .calendarHeader {
   display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  color: var(--darkColor);
+  padding-top: 12px;
+  padding: 12px;
 }
 
 .calendarBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .calendarIcon {
+  width: 24px;
+  height: 24px;
+  stroke: var(--accentColor);
 }
 
 .calendarGrid {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
-  gap: 32px;
-  margin-bottom: 80px;
+  padding: 12px;
+  gap: 2px;
 }
 
 .calendarDayHeader {
+}
+
+.calendarDay {
+  width: 36px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendarToday {
+}
+
+.calendarCurrentMonth {
+}
+
+.calendarOtherMonth {
+}
+
+.calendarHover {
+}
+
+.calendarDisabled {
+  background-color: red;
 }
