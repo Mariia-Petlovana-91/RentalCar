@@ -45,6 +45,7 @@
 }
 
 .input {
+  cursor: pointer;
   width: 204px;
   padding: 12px 16px 12px 16px;
   border-radius: 12px;
@@ -124,6 +125,7 @@
 }
 
 .dropdown {
+  cursor: pointer;
   position: absolute;
   top: 100%;
   left: 0;
