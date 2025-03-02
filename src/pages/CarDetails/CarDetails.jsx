@@ -9,15 +9,21 @@ import { selectCar } from '../../redux/cars/selectors';
 
 import Section from '../../components/base/Section/Section';
 import Container from '../../components/base/Container/Container';
+import Details from '../../components/Details/Details';
 
 const CarDetails = () => {
+  const dispatch = useDispatch();
   const { id } = useParams();
-  console.log(id);
+  useEffect(() => {
+    dispatch(getCarByIdThunk(id));
+  }, [dispatch, id]);
   const car = useSelector(selectCar);
-  console.log(car);
+
   return (
     <Section>
-      <Container></Container>
+      <Container>
+        <Details object={car} />
+      </Container>
     </Section>
   );
 };
