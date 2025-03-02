@@ -1,4 +1,4 @@
-import css from '../Calendar.module.css';
+import css from './Calendar.module.css';
 
 const Calendar = ({ array }) => {
   return <></>;

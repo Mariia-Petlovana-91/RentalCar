@@ -1,0 +1,91 @@
+.flex {
+  display: flex;
+  align-items: center;
+}
+
+.carDetailsContainer {
+  display: flex;
+  gap: 72px;
+}
+
+.firstContainerDetails {
+}
+
+.imdDetails {
+  border-radius: 18.74px;
+  max-width: 640px;
+  max-height: 512px;
+}
+
+.secondaryContainerDetails {
+}
+
+.headContainerDetails {
+  padding-top: 20px;
+  margin-bottom: 68px;
+}
+
+.titleContainerDetails {
+  margin-bottom: 8px;
+}
+
+.titleDetails {
+  margin-right: 16px;
+}
+
+.addressContainerDetails {
+  margin-bottom: 16px;
+}
+
+.textDetails {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--darkColor);
+}
+
+.idDetails {
+  color: var(--grayColor);
+}
+
+.adressTextDetails {
+  margin-right: 16px;
+}
+
+.iconDetails {
+  width: 16px;
+  height: 16px;
+  stroke: var(--darkColor);
+  margin-right: 2px;
+}
+
+.mileageTextDetails {
+}
+
+.priceTextDetails {
+  text-align: start;
+  color: var(--accentColor);
+  margin-bottom: 32px;
+}
+
+.descriptTextDetails {
+}
+
+.listContainerDetails {
+}
+
+.listDetails {
+  margin-bottom: 110px;
+}
+
+.itemDetails {
+  margin-bottom: 16px;
+}
+
+.itemDetails:last-child {
+  margin-bottom: 0px;
+}
+
+.accessoriesFunctionalitiesList {
+  margin-bottom: 0px;
+}

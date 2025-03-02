@@ -1,4 +1,4 @@
-import css from '../OrderForm.module.css';
+import css from './OrderForm.module.css';
 
 import Calendar from '../Calendar/Calendar';
 
