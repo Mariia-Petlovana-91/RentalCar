@@ -18,6 +18,12 @@ const INITIAL_STATE = {
 const carsSlice = createSlice({
   name: 'cars',
   initialState: INITIAL_STATE,
+  reducers: {
+    clearCars: (state) => {
+      state.cars = [];
+    },
+  },
+
   extraReducers: (builder) => {
     builder
       .addCase(getBrandsThunk.pending, (state) => {
@@ -70,5 +76,7 @@ const carsSlice = createSlice({
       });
   },
 });
+
+export const { clearCars } = carsSlice.actions;
 
 export default carsSlice.reducer;

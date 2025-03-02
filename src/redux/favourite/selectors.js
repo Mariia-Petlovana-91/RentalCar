@@ -1,2 +1,2 @@
 export const selectFavoriteItems = (state) =>
-  state.favorites.favoriteItems;
+  state.favoritesData.favoriteItems;
