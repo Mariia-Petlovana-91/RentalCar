@@ -21,8 +21,9 @@ import {
   MdOutlineChevronRight,
 } from 'react-icons/md';
 
-const Calendar = () => {
+const Calendar = ({ onDateSelect }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
+  const [selectedDate, setSelectedDate] = useState(null);
   const today = new Date();
 
   const nextMonth = () => setCurrentMonth(addMonths(currentMonth, 1));
@@ -40,6 +41,13 @@ const Calendar = () => {
     }
 
     return days;
+  };
+
+  const handleDateClick = (date) => {
+    if (!isBefore(date, today)) {
+      setSelectedDate(date);
+      onDateSelect(date);
+    }
   };
 
   return (
@@ -63,30 +71,39 @@ const Calendar = () => {
           <MdOutlineChevronRight className={css.calendarIcon} />
         </button>
       </div>
-      <div className={css.calendarGrid}>
-        {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(
-          (day) => (
-            <div key={day} className={css.calendarDayHeader}>
-              {day}
+      <div className={css.calendarBody}>
+        <div
+          className={clsx(css.calendarGrid, css.calendarDayHeader)}
+        >
+          {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(
+            (day) => (
+              <div key={day} className={css.calendarDayNameHeader}>
+                {day}
+              </div>
+            ),
+          )}
+        </div>
+        <div
+          className={clsx(css.calendarGrid, css.calendarDayContainer)}
+        >
+          {renderDays().map((day, index) => (
+            <div
+              key={index}
+              className={clsx(
+                css.calendarDay,
+                isToday(day) && css.calendarToday,
+                isBefore(day, today) && css.calendarDisabled,
+                selectedDate &&
+                  format(selectedDate, 'yyyy-MM-dd') ===
+                    format(day, 'yyyy-MM-dd') &&
+                  css.calendarSelected,
+              )}
+              onClick={() => handleDateClick(day)}
+            >
+              {format(day, 'd')}
             </div>
-          ),
-        )}
-        {renderDays().map((day, index) => (
-          <div
-            key={index}
-            className={clsx(
-              css.calendarDay,
-              isToday(day) && css.calendarToday,
-              isSameMonth(day, currentMonth)
-                ? css.calendarCurrentMonth
-                : css.calendarOtherMonth,
-              css.calendarHover,
-              isBefore(day, today) && css.calendarDisabled,
-            )}
-          >
-            {format(day, 'd')}
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
     </div>
   );
