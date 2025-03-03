@@ -46,8 +46,6 @@ button {
   cursor: pointer;
   display: block;
   background-color: transparent;
-  scrollbar-width: thin; /* "auto" або "thin"  */
-  scrollbar-color: var(--grayLightColor);
 }
 
 img {
