@@ -45,7 +45,7 @@ const Details = ({
 
   return (
     <div className={css.carDetailsContainer}>
-      <div className={css.firstContainerDetails}>
+      <div>
         <img
           src={img || defaultImg}
           alt={brand}
@@ -53,7 +53,7 @@ const Details = ({
         />
         <OrderForm />
       </div>
-      <div className={css.secondaryContainerDetails}>
+      <div>
         <div className={css.headContainerDetails}>
           <div className={clsx(css.flex, css.titleContainerDetails)}>
             <h2 className={clsx('secondaryTitle', css.titleDetails)}>
@@ -72,14 +72,7 @@ const Details = ({
               <SlLocationPin className={css.iconDetails} />
               {city},{country}
             </p>
-            <p
-              className={clsx(
-                css.textDetails,
-                css.mileageTextDetails,
-              )}
-            >
-              Mileage:{newMileage} km
-            </p>
+            <p className={css.textDetails}>Mileage:{newMileage} km</p>
           </div>
           <p className={clsx('secondaryTitle', css.priceTextDetails)}>
             ${rentalPrice}

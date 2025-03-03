@@ -8,16 +8,11 @@
   gap: 72px;
 }
 
-.firstContainerDetails {
-}
-
 .imdDetails {
   border-radius: 18.74px;
   max-width: 640px;
   max-height: 512px;
-}
-
-.secondaryContainerDetails {
+  margin-bottom: 40px;
 }
 
 .headContainerDetails {
@@ -59,19 +54,10 @@
   margin-right: 2px;
 }
 
-.mileageTextDetails {
-}
-
 .priceTextDetails {
   text-align: start;
   color: var(--accentColor);
   margin-bottom: 32px;
-}
-
-.descriptTextDetails {
-}
-
-.listContainerDetails {
 }
 
 .listDetails {

@@ -5,6 +5,9 @@
   border-radius: 12px;
   position: relative;
   background: white;
+  position: absolute;
+  right: 0px;
+  top: 40px;
 }
 
 .calendarContainer::before {

@@ -25,8 +25,6 @@ const CarDetails = () => {
     dispatch(getCarByIdThunk(id));
   }, [dispatch, id]);
 
-  console.log(car);
-
   return (
     <Section>
       <Container>

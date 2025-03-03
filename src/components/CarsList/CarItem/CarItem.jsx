@@ -71,7 +71,6 @@ const CarItem = ({
       >
         Read more
       </NavLink>
-      ;
     </>
   );
 };

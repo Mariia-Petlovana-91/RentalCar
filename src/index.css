@@ -137,3 +137,8 @@ img {
 .nothingError {
   color: red;
 }
+
+.errorText {
+  color: red;
+  padding-bottom: 5px;
+}

@@ -1,0 +1,71 @@
+.forContainer {
+  max-width: 640px;
+  padding: 32px;
+  border-radius: 10px;
+  border: 1px solid var(--grayLightColor);
+}
+
+.formDescriptContainer {
+  margin-bottom: 24px;
+}
+
+.formTitle {
+  margin-bottom: 8px;
+}
+
+.formText {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+  color: var(--grayColor);
+}
+
+.formGroup {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  border-radius: 12px;
+  background-color: var(--backgroundColorSecondary);
+  padding: 14px 20px 14px 20px;
+  margin-bottom: 16px;
+}
+
+.formLabel {
+  margin-right: 8px;
+}
+
+.inputField {
+  width: 100%;
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.formGroupData {
+  justify-content: space-between;
+  position: relative;
+}
+
+.calendarToggleBtn {
+  width: 80%;
+  height: 24px;
+  text-align: end;
+}
+
+.formGroupComment {
+  margin-bottom: 24px;
+}
+
+.textArea {
+  width: 100%;
+  min-height: 88px;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  resize: none;
+}
+
+.orderButton {
+  margin: auto;
+  max-width: 156px;
+}
