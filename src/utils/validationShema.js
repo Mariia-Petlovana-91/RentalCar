@@ -1,12 +1,16 @@
 import * as Yup from 'yup';
 
+const mileagePattern = /^\d{1,3}(,\d{3})*$/;
+
 export const mileageValidataSchema = Yup.object({
-  from: Yup.string()
-    .min(3, '"from" must contain more than 3 characters.')
-    .max(4, '"from" must contain less than 4 characters.'),
-  to: Yup.string()
-    .min(3, '"to" must contain more than 3 characters.')
-    .max(6, '"to" must contain less than 6 characters.'),
+  minMileage: Yup.string().matches(
+    mileagePattern,
+    'Enter mileage in format 5,000',
+  ),
+  maxMileage: Yup.string().matches(
+    mileagePattern,
+    'Enter mileage in format 5,000',
+  ),
 });
 
 export const orderValidationSchema = Yup.object({
