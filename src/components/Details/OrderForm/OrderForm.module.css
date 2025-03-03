@@ -58,7 +58,7 @@
 
 .textArea {
   width: 100%;
-  min-height: 88px;
+  height: auto;
   outline: none;
   border: none;
   background-color: transparent;

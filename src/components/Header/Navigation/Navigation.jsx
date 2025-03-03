@@ -7,46 +7,22 @@ import { onActiveClass } from '../../../utils/onActiveClass';
 const Navigation = () => {
   return (
     <nav>
-      <ul
-        className={
-          css.navList
-        }
-      >
-        <li
-          className={
-            css.navItem
-          }
-        >
+      <ul className={css.navList}>
+        <li className={css.navItem}>
           <NavLink
             to="/"
-            className={({
-              isActive,
-            }) =>
-              onActiveClass(
-                isActive,
-                css.navLink,
-                css.navActive,
-              )
+            className={({ isActive }) =>
+              onActiveClass(isActive, css.navLink, css.navActive)
             }
           >
             Home
           </NavLink>
         </li>
-        <li
-          className={
-            css.navItem
-          }
-        >
+        <li className={css.navItem}>
           <NavLink
             to="/catalog"
-            className={({
-              isActive,
-            }) =>
-              onActiveClass(
-                isActive,
-                css.navLink,
-                css.navActive,
-              )
+            className={({ isActive }) =>
+              onActiveClass(isActive, css.navLink, css.navActive)
             }
           >
             Catalog
