@@ -20,6 +20,7 @@ import { clearCars } from '../../redux/cars/slice';
 
 import Section from '../../components/base/Section/Section';
 import Container from '../../components/base/Container/Container';
+import Loader from '../../components/base/Loader/Loader';
 import SearchForm from '../../components/SearchForm/SearchForm';
 import CarsList from '../../components/CarsList/CarsList';
 import LoadMore from '../../components/LoadMore/LoadMore';
@@ -35,7 +36,7 @@ const CarsCatalog = () => {
   const cars = useSelector(selectCars);
   const totalPages = useSelector(selectTotalPages);
   const isLoading = useSelector(selectIsLoading);
-  const error = useSelector(selectError);
+  const isError = useSelector(selectError);
 
   useEffect(() => {
     dispatch(getBrandsThunk());
@@ -62,18 +63,19 @@ const CarsCatalog = () => {
   return (
     <Section>
       <Container>
-        {error ? (
-          <NothingFound error={error} />
-        ) : (
-          <>
+        {isLoading && <Loader />}
+        {!isLoading && isError && <NothingFound error={isError} />}
+        {!isLoading && !isError && (
+          <div>
             <SearchForm brands={brands} />
             <CarsList array={cars} />
+
             {page >= totalPages && !isLoading ? (
               <NotItem />
             ) : (
               <LoadMore onClick={onLoadMore} />
             )}
-          </>
+          </div>
         )}
       </Container>
     </Section>
