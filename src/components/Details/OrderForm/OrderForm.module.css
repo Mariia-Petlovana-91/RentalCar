@@ -1,6 +1,6 @@
 .forContainer {
   width: 100%;
-  height: auto;
+
   padding: 16px;
   border-radius: 10px;
   border: 1px solid var(--grayLightColor);
@@ -81,7 +81,7 @@
 @media (min-width: 1440px) {
   .forContainer {
     max-width: 640px;
-    max-height: 488px;
+
     padding: 32px;
   }
 }

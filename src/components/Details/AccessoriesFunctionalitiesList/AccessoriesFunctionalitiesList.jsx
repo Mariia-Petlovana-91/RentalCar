@@ -5,12 +5,7 @@ import clsx from 'clsx';
 
 const AccessoriesFunctionalitiesList = ({ array }) => {
   return (
-    <ul
-      className={clsx(
-        css.listDetails,
-        css.accessoriesFunctionalitiesList,
-      )}
-    >
+    <ul className={clsx(css.listDetails, css.listDetailsLslast)}>
       <h3 className="thirdTitle">Accessories and functionalities:</h3>
       {array.map((ar, index) => (
         <li key={index} className={clsx(css.flex, css.itemDetails)}>
