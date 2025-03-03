@@ -4,20 +4,20 @@
 }
 
 .carDetailsContainer {
-  display: flex;
-  gap: 72px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 24px;
 }
 
 .imdDetails {
   border-radius: 18.74px;
-  max-width: 640px;
-  max-height: 512px;
-  margin-bottom: 40px;
+  width: 100%;
+  height: auto;
+  margin-bottom: 24px;
 }
 
 .headContainerDetails {
-  padding-top: 20px;
-  margin-bottom: 68px;
+  margin-bottom: 18px;
 }
 
 .titleContainerDetails {
@@ -30,6 +30,11 @@
 
 .addressContainerDetails {
   margin-bottom: 16px;
+}
+
+.firstContainer {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 }
 
 .textDetails {
@@ -57,15 +62,15 @@
 .priceTextDetails {
   text-align: start;
   color: var(--accentColor);
-  margin-bottom: 32px;
+  margin-bottom: 20px;
 }
 
 .listDetails {
-  margin-bottom: 110px;
+  margin-bottom: 20px;
 }
 
 .itemDetails {
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .itemDetails:last-child {
@@ -74,4 +79,61 @@
 
 .accessoriesFunctionalitiesList {
   margin-bottom: 0px;
+}
+
+@media (min-width: 768px) {
+  .firstContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+
+  .imdDetails {
+    height: 100%;
+    margin-bottom: 0px;
+  }
+
+  .headContainerDetails {
+    margin-bottom: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .carDetailsContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 72px;
+  }
+
+  .firstContainer {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 0px;
+  }
+
+  .imdDetails {
+    max-width: 640px;
+    max-height: 512px;
+  }
+
+  .headContainerDetails {
+    padding-top: 20px;
+    margin-bottom: 68px;
+  }
+
+  .priceTextDetails {
+    margin-bottom: 32px;
+  }
+
+  .listDetails {
+    margin-bottom: 110px;
+  }
+
+  .itemDetails {
+    margin-bottom: 16px;
+  }
+
+  .itemDetails:last-child {
+    margin-bottom: 0px;
+  }
 }

@@ -1,7 +1,21 @@
 .loader {
-  padding-top: 24px;
-  padding-bottom: 24px;
-  max-width: 64px;
+  padding-top: 12px;
+  padding-bottom: 12px;
+  max-width: 32px;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (min-width: 768px) {
+  .loader {
+    padding-top: 24px;
+    padding-bottom: 24px;
+    max-width: 48px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .loader {
+    max-width: 64px;
+  }
 }

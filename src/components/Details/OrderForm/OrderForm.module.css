@@ -1,6 +1,7 @@
 .forContainer {
-  max-width: 640px;
-  padding: 32px;
+  width: 100%;
+  height: auto;
+  padding: 16px;
   border-radius: 10px;
   border: 1px solid var(--grayLightColor);
 }
@@ -68,4 +69,19 @@
 .orderButton {
   margin: auto;
   max-width: 156px;
+}
+
+@media (min-width: 768px) {
+  .forContainer {
+    border-radius: 18.74px;
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .forContainer {
+    max-width: 640px;
+    max-height: 488px;
+    padding: 32px;
+  }
 }

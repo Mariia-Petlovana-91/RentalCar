@@ -1,9 +1,9 @@
 .form {
   display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  flex-direction: column;
+  gap: 12px;
   flex-wrap: wrap;
-  padding: 0px 138px 56px 138px;
+  padding: 0px 24px 0px 0px;
 }
 
 .containerGeneral {
@@ -71,7 +71,7 @@
 }
 
 .mileageContainer {
-  width: 320px;
+  width: 100%;
 }
 
 .ollInputContainer {
@@ -149,4 +149,31 @@
 
 .dropdownPrice {
   max-height: 188px;
+}
+
+@media (min-width: 786px) {
+  .form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 24px;
+    flex-wrap: wrap;
+    padding: 0px 0px 32px 0px;
+  }
+
+  .mileageContainer {
+    width: 320px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .form {
+    display: flex;
+    justify-content: space-around;
+    gap: 0px;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    padding: 0px 138px 56px 138px;
+  }
 }

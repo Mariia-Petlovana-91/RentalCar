@@ -45,7 +45,7 @@ const Details = ({
 
   return (
     <div className={css.carDetailsContainer}>
-      <div>
+      <div className={css.firstContainer}>
         <img
           src={img || defaultImg}
           alt={brand}
@@ -53,7 +53,7 @@ const Details = ({
         />
         <OrderForm />
       </div>
-      <div>
+      <div className={css.secondaryContainer}>
         <div className={css.headContainerDetails}>
           <div className={clsx(css.flex, css.titleContainerDetails)}>
             <h2 className={clsx('secondaryTitle', css.titleDetails)}>
