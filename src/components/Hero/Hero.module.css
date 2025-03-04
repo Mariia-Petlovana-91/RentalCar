@@ -24,8 +24,8 @@ scrollbar {
 .heroText {
   margin-bottom: 20px;
   font-weight: 600;
-  font-size: 24px;
-  line-height: 1.3;
+  font-size: 20px;
+
   text-align: center;
   color: var(--whiteOriginColor);
 }
@@ -45,5 +45,7 @@ scrollbar {
 @media (min-width: 1440) {
   .heroText {
     margin-bottom: 40px;
+    font-size: 24px;
+    line-height: 1.3;
   }
 }
