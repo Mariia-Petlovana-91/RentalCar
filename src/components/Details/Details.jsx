@@ -59,9 +59,9 @@ const Details = ({
             <h2 className={clsx('secondaryTitle', css.titleDetails)}>
               {brand} {year}
             </h2>
-            <span className={clsx(css.textDetails, css.idDetails)}>
+            <p className={clsx(css.textDetails, css.idDetails)}>
               Id: {id}
-            </span>
+            </p>
           </div>
           <div
             className={clsx(css.flex, css.addressContainerDetails)}

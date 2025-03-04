@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import {
   addMonths,
   subMonths,
@@ -72,22 +72,20 @@ const Calendar = ({ onDateSelect }) => {
         </button>
       </div>
       <div className={css.calendarBody}>
-        <div
-          className={clsx(css.calendarGrid, css.calendarDayHeader)}
-        >
+        <ul className={clsx(css.calendarGrid, css.calendarDayHeader)}>
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(
             (day) => (
-              <div key={day} className={css.calendarDayNameHeader}>
+              <li key={day} className={css.calendarDayNameHeader}>
                 {day}
-              </div>
+              </li>
             ),
           )}
-        </div>
-        <div
+        </ul>
+        <ul
           className={clsx(css.calendarGrid, css.calendarDayContainer)}
         >
           {renderDays().map((day, index) => (
-            <div
+            <li
               key={index}
               className={clsx(
                 css.calendarDay,
@@ -101,9 +99,9 @@ const Calendar = ({ onDateSelect }) => {
               onClick={() => handleDateClick(day)}
             >
               {format(day, 'd')}
-            </div>
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
     </div>
   );

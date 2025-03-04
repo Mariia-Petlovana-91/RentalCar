@@ -57,7 +57,7 @@ const OrderForm = () => {
           </div>
           <ErrorMessage
             name="name"
-            component="div"
+            component="p"
             className="errorText"
           />
 
@@ -74,7 +74,7 @@ const OrderForm = () => {
           </div>
           <ErrorMessage
             name="email"
-            component="div"
+            component="p"
             className="errorText"
           />
 
