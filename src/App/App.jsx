@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Suspense, lazy } from 'react';
 
 import Layout from '../components/base/Layout/Layout';
+import Loader from '../components/base/Loader/Loader';
 
 const Home = lazy(() => import('../pages/Home/Home'));
 const CarsCatalog = lazy(() =>
@@ -16,17 +17,17 @@ const NotFound = lazy(() => import('../pages/NotFound/NotFound'));
 export default function App() {
   return (
     <>
-      <Layout>
-        <Suspense>
-          <Routes>
-            <Route path="/" element={<Home />} />
-
-            <Route path="/catalog" element={<CarsCatalog />} />
-            <Route path="/catalog/:id" element={<CarDetails />} />
+      <Suspense fallback={<Loader />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="catalog" element={<CarsCatalog />} />
+            <Route path="catalog/:id" element={<CarDetails />} />
             <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </Layout>
+          </Route>
+        </Routes>
+      </Suspense>
+
       <Toaster
         position="bottom-right"
         reverseOrder={false}
