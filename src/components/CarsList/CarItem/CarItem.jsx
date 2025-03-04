@@ -30,7 +30,12 @@ const CarItem = ({
   return (
     <>
       <div className={css.itemImgContainer}>
-        <img src={img} alt={brand} className={css.itemImg} />
+        <img
+          src={img}
+          alt={brand}
+          className={css.itemImg}
+          loading="lazy"
+        />
         <button
           type="button"
           className={css.itemIconBtn}

@@ -55,6 +55,7 @@ const SearchForm = ({ brands }) => {
     setSearchParams(params);
     const filters = Object.fromEntries([...params]);
     dispatch(clearCars());
+
     dispatch(setFilters(filters));
     dispatch(getCarsThunk({ ...filters, page: 1 }));
   }

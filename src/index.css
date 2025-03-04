@@ -10,6 +10,10 @@
   --boxShadow: 0px 4px 8px rgba(82, 97, 129, 0.2);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--whiteOriginColor);
   font-family: Manrope;

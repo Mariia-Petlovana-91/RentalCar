@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
@@ -7,7 +7,6 @@ import {
 } from '../../redux/cars/operation';
 
 import { setFilters } from '../../redux/filters/slice';
-
 import {
   selectCars,
   selectTotalPages,
@@ -30,7 +29,7 @@ import NothingFound from '../../components/NothingFound/NothingFound';
 const CarsCatalog = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  const [page, setPage] = useState(1);
+  const pageRef = useRef(1); // ✅ Використовуємо `useRef`, щоб уникнути зайвих ререндерів
 
   const brands = useSelector(selectBrands);
   const cars = useSelector(selectCars);
@@ -38,23 +37,31 @@ const CarsCatalog = () => {
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
 
+  // ✅ Отримуємо бренди тільки один раз при завантаженні сторінки
   useEffect(() => {
     dispatch(getBrandsThunk());
+  }, [dispatch]);
+
+  // ✅ Оновлюємо фільтри, але не очищаємо список при кожному ререндері
+  useEffect(() => {
     const filters = Object.fromEntries([...searchParams]);
     dispatch(setFilters(filters));
+
+    // Очищуємо список лише при зміні фільтрів
     dispatch(clearCars());
-    setPage(1);
+    pageRef.current = 1;
+
     dispatch(getCarsThunk({ ...filters, page: 1 }));
   }, [dispatch, searchParams]);
 
   function onLoadMore() {
-    if (page < totalPages) {
-      const nextPage = page + 1;
-      setPage(nextPage);
+    if (pageRef.current < totalPages) {
+      pageRef.current += 1; // ✅ Оновлюємо сторінку без ререндеру
+
       dispatch(
         getCarsThunk({
           ...Object.fromEntries([...searchParams]),
-          page: nextPage,
+          page: pageRef.current,
         }),
       );
     }
@@ -70,7 +77,7 @@ const CarsCatalog = () => {
             <SearchForm brands={brands} />
             <CarsList array={cars} />
 
-            {page >= totalPages && !isLoading ? (
+            {pageRef.current >= totalPages && !isLoading ? (
               <NotItem />
             ) : (
               <LoadMore onClick={onLoadMore} />
