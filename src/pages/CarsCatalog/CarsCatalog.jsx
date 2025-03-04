@@ -66,7 +66,7 @@ const CarsCatalog = () => {
         {isLoading && <Loader />}
         {!isLoading && isError && <NothingFound error={isError} />}
         {!isLoading && !isError && (
-          <div>
+          <>
             <SearchForm brands={brands} />
             <CarsList array={cars} />
 
@@ -75,7 +75,7 @@ const CarsCatalog = () => {
             ) : (
               <LoadMore onClick={onLoadMore} />
             )}
-          </div>
+          </>
         )}
       </Container>
     </Section>

@@ -59,15 +59,20 @@ const CarItem = ({
       </div>
       <div className={css.itemAbout}>
         <p className={css.itemAboutText}>
-          | {city} | {country} | {rentalCompany} |
+          <span className={css.itemAboutLine}>|</span> {city}{' '}
+          <span className={css.itemAboutLine}>|</span> {country}{' '}
+          <span className={css.itemAboutLine}>|</span> {rentalCompany}{' '}
+          <span className={css.itemAboutLine}>|</span>
         </p>
         <p className={css.itemAboutText}>
-          | {type} | {newMileage} {'km'} |
+          <span className={css.itemAboutLine}>|</span> {type}{' '}
+          <span className={css.itemAboutLine}>|</span> {newMileage}{' '}
+          {'km'} <span className={css.itemAboutLine}>|</span>
         </p>
       </div>
       <NavLink
         to={`/catalog/${id}`}
-        className={clsx('btn', 'primaryBtn', css.navBtn)}
+        className={clsx('btn', 'primaryBtn', css.itemNavBtn)}
       >
         Read more
       </NavLink>
