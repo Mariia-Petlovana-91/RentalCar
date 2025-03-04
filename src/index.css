@@ -144,6 +144,17 @@ img {
   padding-bottom: 5px;
 }
 
+::-webkit-scrollbar {
+  width: 24px;
+  background: var(--whiteOriginColor);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--grayLightColor);
+  border-radius: 12px;
+  border: 8px solid var(--whiteOriginColor);
+}
+
 @media (min-width: 768px) {
   .primaryTitle {
     font-size: 48px;
