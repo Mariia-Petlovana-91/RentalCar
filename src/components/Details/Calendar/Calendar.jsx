@@ -63,11 +63,7 @@ const Calendar = ({ onDateSelect }) => {
         <h2 className={css.calendarTitle}>
           {format(currentMonth, 'MMMM yyyy')}
         </h2>
-        <button
-          type="button"
-          onClick={nextMonth}
-          className={css.calendarBtn}
-        >
+        <button type="button" onClick={nextMonth} className="flex">
           <MdOutlineChevronRight className={css.calendarIcon} />
         </button>
       </div>
@@ -75,7 +71,14 @@ const Calendar = ({ onDateSelect }) => {
         <ul className={clsx(css.calendarGrid, css.calendarDayHeader)}>
           {['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'].map(
             (day) => (
-              <li key={day} className={css.calendarDayNameHeader}>
+              <li
+                key={day}
+                className={clsx(
+                  'flex',
+                  css.dayText,
+                  css.calendarDayNameHeader,
+                )}
+              >
                 {day}
               </li>
             ),
@@ -88,6 +91,8 @@ const Calendar = ({ onDateSelect }) => {
             <li
               key={index}
               className={clsx(
+                'flex',
+                css.dayText,
                 css.calendarDay,
                 isToday(day) && css.calendarToday,
                 isBefore(day, today) && css.calendarDisabled,

@@ -43,12 +43,6 @@
   padding: 12px;
 }
 
-.calendarBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
 .calendarIcon {
   width: 24px;
   height: 24px;
@@ -68,13 +62,13 @@
   border-bottom: 1px solid var(--accentColor);
 }
 
-.calendarDayNameHeader {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.dayText {
   font-weight: 600;
   font-size: 12px;
   line-height: 1.2;
+}
+
+.calendarDayNameHeader {
   color: var(--grayColor);
 }
 
@@ -84,15 +78,9 @@
 }
 
 .calendarDay {
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 1.2;
   color: var(--darkColor);
   width: 36px;
   height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   cursor: pointer;
   border-radius: 50%;
 }

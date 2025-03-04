@@ -12,14 +12,7 @@ import { getCarsThunk } from '../../redux/cars/operation';
 import { setFilters } from '../../redux/filters/slice';
 import { clearCars } from '../../redux/cars/slice';
 
-const formatMileage = (value) => {
-  if (!value) return '';
-  return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-};
-
-const parseMileage = (value) => {
-  return value.replace(/,/g, '');
-};
+import { formatMileage, parseMileage } from '../../utils/helpers';
 
 const SearchForm = ({ brands }) => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -71,7 +64,13 @@ const SearchForm = ({ brands }) => {
                 className={css.selectWrapper}
                 onClick={() => setIsOpenBrand(!isOpenBrand)}
               >
-                <div className={clsx(css.input, css.optionCeneral)}>
+                <div
+                  className={clsx(
+                    css.input,
+                    css.text,
+                    css.optionCeneral,
+                  )}
+                >
                   {selectedBrand || 'Choose a brand'}
                 </div>
                 <span className={css.icon}>
@@ -85,7 +84,7 @@ const SearchForm = ({ brands }) => {
                   {brandsArray.map((brand, index) => (
                     <div
                       key={index}
-                      className={css.option}
+                      className={clsx(css.text, css.option)}
                       onClick={() => {
                         setSelectedBrand(brand);
                         setIsOpenBrand(false);
@@ -106,7 +105,7 @@ const SearchForm = ({ brands }) => {
                 className={css.selectWrapper}
                 onClick={() => setIsOpenPrice(!isOpenPrice)}
               >
-                <div className={css.input}>
+                <div className={clsx(css.text, css.input)}>
                   {selectedPrice || 'Choose a price'}
                 </div>
                 <span className={css.icon}>
@@ -120,7 +119,7 @@ const SearchForm = ({ brands }) => {
                   {price.map((p, index) => (
                     <div
                       key={index}
-                      className={css.option}
+                      className={clsx(css.text, css.option)}
                       onClick={() => {
                         setSelectedPrice(p);
                         setIsOpenPrice(false);
@@ -138,6 +137,7 @@ const SearchForm = ({ brands }) => {
             <div className={css.ollInputContainer}>
               <div
                 className={clsx(
+                  css.tex,
                   css.inputContainer,
                   css.input,
                   css.inputContainerFrom,
@@ -145,7 +145,7 @@ const SearchForm = ({ brands }) => {
               >
                 <span className={css.inputLabel}>From</span>
                 <Field
-                  className={css.inputMileage}
+                  className={clsx(css.text, css.inputMileage)}
                   type="text"
                   name="minMileage"
                   value={values.minMileage}
@@ -160,6 +160,7 @@ const SearchForm = ({ brands }) => {
 
               <div
                 className={clsx(
+                  css.text,
                   css.inputContainer,
                   css.input,
                   css.inputContainerTo,
@@ -167,7 +168,7 @@ const SearchForm = ({ brands }) => {
               >
                 <span className={css.inputLabel}>To</span>
                 <Field
-                  className={css.inputMileage}
+                  className={clsx(css.text, css.inputMileage)}
                   type="text"
                   name="maxMileage"
                   value={values.maxMileage}

@@ -1,3 +1,9 @@
+.text {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 1.25;
+}
+
 .form {
   display: flex;
   flex-direction: column;
@@ -32,7 +38,6 @@
 }
 
 .option {
-  font-weight: 500;
   font-size: 16px;
   line-height: 1.25;
   width: 100%;
@@ -50,9 +55,6 @@
   padding: 12px 16px 12px 16px;
   border-radius: 12px;
   background-color: var(--headerColor);
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -95,9 +97,6 @@
 }
 
 .inputMileage {
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 1.25;
   width: 100%;
   outline: none;
   border: none;
