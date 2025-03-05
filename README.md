@@ -52,7 +52,7 @@ criteria, add favorites, and make a booking.
 
 This project uses a backend API to fetch car information.
 
-- [API Documentation ](#https://car-rental-api.goit.global/api-docs/)
+- [API Documentation ](https://car-rental-api.goit.global/api-docs/)
 
 ## 🖼 Screenshots
 
