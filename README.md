@@ -58,9 +58,8 @@ This project uses a backend API to fetch car information.
 
 ## 🖼 Screenshots
 
-![Home Page](./screenshots/home.png)
-![Catalog Page](./screenshots/catalog.png)
-![Car Details Page](./screenshots/details.png)
+![Home Page](./pablic/home.png) ![Catalog Page](./pablic/catalog.png)
+![Car Details Page](./pablic/detailCar.png)
 
 ## 👨‍💻 Author
 
