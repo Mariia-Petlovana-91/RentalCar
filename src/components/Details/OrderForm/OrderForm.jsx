@@ -79,7 +79,13 @@ const OrderForm = () => {
           />
 
           <div className={clsx(css.formGroup, css.formGroupData)}>
-            <label className={clsx(css.formLabel, css.formText)}>
+            <label
+              className={clsx(
+                css.formLabel,
+                css.formText,
+                css.calendarLabel,
+              )}
+            >
               Booking date
             </label>
             <button
