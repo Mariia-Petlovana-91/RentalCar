@@ -3,6 +3,13 @@
   align-items: center;
 }
 
+::-webkit-scrollbar {
+  display: none;
+}
+scrollbar {
+  display: none;
+}
+
 .carDetailsContainer {
   display: grid;
   grid-template-columns: repeat(1, 1fr);

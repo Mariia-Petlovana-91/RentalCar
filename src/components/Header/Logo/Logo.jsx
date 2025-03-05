@@ -8,11 +8,7 @@ const Logo = () => {
   return (
     <>
       <NavLink to="/">
-        <img
-          src={logoIcon}
-          alt="logo"
-          className={css.logo}
-        />
+        <img src={logoIcon} alt="logo" className={css.logo} />
       </NavLink>
     </>
   );
