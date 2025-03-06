@@ -37,29 +37,10 @@ const carsSlice = createSlice({
       })
       .addCase(getCarsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cars = action.payload.cars; // Початкове завантаження перезаписує
+        state.cars = [...state.cars, ...action.payload.cars];
         state.totalPages = action.payload.totalPages;
       })
       .addCase(getCarsThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
-      })
-
-      .addCase(getCarsMoreThunk.pending, (state) => {
-        state.isLoading = true;
-      })
-      .addCase(getCarsMoreThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
-        console.log('Довантажено авто:', action.payload.cars.length);
-
-        state.cars = [...state.cars, ...action.payload.cars];
-        console.log(
-          'Нові машини після фільтра:',
-          action.payload.cars.length,
-        );
-        state.totalPages = action.payload.totalPages;
-      })
-      .addCase(getCarsMoreThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
