@@ -6,6 +6,7 @@ const LoadMore = ({ onClick }) => {
   return (
     <>
       <button
+        type="button"
         className={clsx('btn', 'secondaryBtn', css.loadMoreBtn)}
         onClick={onClick}
       >

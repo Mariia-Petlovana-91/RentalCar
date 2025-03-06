@@ -37,6 +37,7 @@ const SearchForm = ({ brands }) => {
   };
 
   function onSubmit(values) {
+    event.preventDefault();
     const params = new URLSearchParams();
     if (selectedBrand) params.set('brand', selectedBrand);
     if (selectedPrice) params.set('price', selectedPrice);

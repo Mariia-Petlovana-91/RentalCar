@@ -3,6 +3,7 @@ import {
   getBrandsThunk,
   getCarByIdThunk,
   getCarsThunk,
+  getCarsMoreThunk,
 } from './operation';
 
 const INITIAL_STATE = {
@@ -12,7 +13,6 @@ const INITIAL_STATE = {
   brands: null,
   isLoading: false,
   error: false,
-  price: ['30', '40', '50', '60', '70', '80', '90', '100', '110'],
 };
 
 const carsSlice = createSlice({
@@ -21,22 +21,14 @@ const carsSlice = createSlice({
   reducers: {
     clearCars: (state) => {
       state.cars = [];
+      state.totalPages = 0;
     },
   },
 
   extraReducers: (builder) => {
     builder
-      .addCase(getBrandsThunk.pending, (state) => {
-        state.isLoading = true;
-        state.error = null;
-      })
       .addCase(getBrandsThunk.fulfilled, (state, action) => {
-        state.isLoading = false;
         state.brands = action.payload;
-      })
-      .addCase(getBrandsThunk.rejected, (state, action) => {
-        state.isLoading = false;
-        state.error = action.payload;
       })
 
       .addCase(getCarsThunk.pending, (state) => {
@@ -45,34 +37,35 @@ const carsSlice = createSlice({
       })
       .addCase(getCarsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        const { cars, totalPages } = action.payload;
-
-        if (
-          state.cars.length === 0 ||
-          state.cars[0].id !== cars[0].id
-        ) {
-          state.cars = [...state.cars, ...cars];
-        }
-
-        state.totalPages = totalPages;
+        state.cars = action.payload.cars; // Початкове завантаження перезаписує
+        state.totalPages = action.payload.totalPages;
       })
-
       .addCase(getCarsThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       })
 
-      .addCase(getCarByIdThunk.pending, (state) => {
+      .addCase(getCarsMoreThunk.pending, (state) => {
         state.isLoading = true;
-        state.error = null;
       })
-      .addCase(getCarByIdThunk.fulfilled, (state, action) => {
+      .addCase(getCarsMoreThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.car = action.payload;
+        console.log('Довантажено авто:', action.payload.cars.length);
+
+        state.cars = [...state.cars, ...action.payload.cars];
+        console.log(
+          'Нові машини після фільтра:',
+          action.payload.cars.length,
+        );
+        state.totalPages = action.payload.totalPages;
       })
-      .addCase(getCarByIdThunk.rejected, (state, action) => {
+      .addCase(getCarsMoreThunk.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
+      })
+
+      .addCase(getCarByIdThunk.fulfilled, (state, action) => {
+        state.car = action.payload;
       });
   },
 });

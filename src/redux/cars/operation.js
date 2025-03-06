@@ -8,13 +8,27 @@ export const getCarsThunk = createAsyncThunk(
   'cars/getCars',
   async (params = {}, thunkAPI) => {
     try {
-      const defaultParams = {
-        page: 1,
-        limit: 12,
-      };
+      // const defaultParams = {
+      //   page: 1,
+      //   limit: 12,
+      // };
 
-      const requestParams = { ...defaultParams, ...params };
-      const data = await getCars(requestParams);
+      // const requestParams = { ...defaultParams, ...params };
+      const data = await getCars(params);
+
+      return data;
+    } catch (error) {
+      toast.error('Upss, not found cars.😔 Try again later.');
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  },
+);
+
+export const getCarsMoreThunk = createAsyncThunk(
+  'cars/getMoreCars',
+  async (page = {}, thunkAPI) => {
+    try {
+      const data = await getCars({ ...page });
 
       return data;
     } catch (error) {
