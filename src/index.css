@@ -152,6 +152,10 @@ img {
   text-align: center;
 }
 
+.nothingContainerItem {
+  max-height: 110px;
+}
+
 .nothingError {
   color: red;
 }
