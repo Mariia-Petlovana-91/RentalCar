@@ -62,13 +62,16 @@ This project uses a backend API to fetch car information.
 
 **Catalog Page**
 
-![Catalog Page](./pablic/catalog.png)
-![Filtration Page](./pablic/filtration.png)
+## ![Catalog Page](./pablic/catalog.png)
+
+## ![Filtration Page](./pablic/filtration.png)
+
 ![Pagination Page](./pablic/pagination.png)
 
 **Car Details Page**
 
-![Car Details Page](./pablic/detailCar.png)
+## ![Car Details Page](./pablic/detailCar.png)
+
 ![Order Form](./pablic/orderForm.png)
 
 ## ✨ Materials for this project are provided GoIt
