@@ -12,6 +12,7 @@
   background-position: center;
   background-size: cover;
   align-content: center;
+  background-color: var(--headerColor);
 }
 
 ::-webkit-scrollbar {
