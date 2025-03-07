@@ -6,10 +6,12 @@ import Section from '../../components/base/Section/Section';
 const NotFound = () => {
   return (
     <Section>
-      <h2 className={clsx('secondaryTitle', css.notFoundTitle)}>
-        Page not found
-      </h2>
-      <div className={css.notFoundImg}></div>
+      <div className={css.notFoundPage}>
+        <h2 className={clsx('secondaryTitle', css.notFoundTitle)}>
+          Page not found
+        </h2>
+        <div className={css.notFoundImg}></div>
+      </div>
     </Section>
   );
 };

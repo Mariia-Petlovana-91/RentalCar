@@ -1,3 +1,10 @@
+.notFoundPage {
+  background-color: var(--headerColor);
+
+  border-top: 1px solid var(--grayLightColor);
+  border-bottom: 1px solid var(--grayLightColor);
+}
+
 .notFoundTitle {
   padding: 24px;
 }
@@ -12,7 +19,7 @@
   background-position: center;
   background-size: cover;
   align-content: center;
-  background-color: var(--headerColor);
+  margin-bottom: 24px;
 }
 
 ::-webkit-scrollbar {
@@ -23,7 +30,7 @@ scrollbar {
 }
 
 @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-  .hero {
+  .notFoundImg {
     background-image: url('../../img/NotFound_2x.jpg');
   }
 }
