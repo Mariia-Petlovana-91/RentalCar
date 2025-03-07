@@ -33,7 +33,7 @@ const OrderForm = () => {
       validationSchema={orderValidationSchema}
       onSubmit={onSubmit}
     >
-      {({ touched, errors, setFieldValue }) => (
+      {({ values, touched, errors, setFieldValue }) => (
         <Form className={css.forContainer}>
           <div className={css.formDescriptContainer}>
             <h3 className={clsx('thirdTitle', css.formTitle)}>
@@ -45,10 +45,15 @@ const OrderForm = () => {
           </div>
 
           <div className={css.formGroup}>
-            <label className={clsx(css.formLabel, css.formText)}>
-              Name
-              {touched.name && errors.name ? <span>*</span> : ''}
-            </label>
+            {!values.name ? (
+              <label className={clsx(css.formLabel, css.formText)}>
+                Name
+                {touched.name && errors.name ? <span>*</span> : ''}
+              </label>
+            ) : (
+              ''
+            )}
+
             <Field
               type="text"
               name="name"
@@ -62,10 +67,15 @@ const OrderForm = () => {
           />
 
           <div className={css.formGroup}>
-            <label className={clsx(css.formLabel, css.formText)}>
-              Email
-              {touched.email && errors.email ? <span>*</span> : ''}
-            </label>
+            {!values.email ? (
+              <label className={clsx(css.formLabel, css.formText)}>
+                Email
+                {touched.email && errors.email ? <span>*</span> : ''}
+              </label>
+            ) : (
+              ''
+            )}
+
             <Field
               type="email"
               name="email"
@@ -79,16 +89,22 @@ const OrderForm = () => {
           />
 
           <div className={clsx(css.formGroup, css.formGroupData)}>
-            <label
-              className={clsx(
-                css.formLabel,
-                css.formText,
-                css.calendarLabel,
-              )}
-            >
-              Booking date
-            </label>
+            {!values.date ? (
+              <label
+                className={clsx(
+                  css.formLabel,
+                  css.formText,
+                  css.calendarLabel,
+                )}
+              >
+                Booking date
+              </label>
+            ) : (
+              ''
+            )}
+
             <button
+              name="date"
               type="button"
               className={clsx(css.calendarToggleBtn, css.formText)}
               onClick={() => setShowCalendar(!showCalendar)}
@@ -105,9 +121,14 @@ const OrderForm = () => {
           </div>
 
           <div className={clsx(css.formGroup, css.formGroupComment)}>
-            <label className={clsx(css.formLabel, css.formText)}>
-              Comment
-            </label>
+            {!values.comment ? (
+              <label className={clsx(css.formLabel, css.formText)}>
+                Comment
+              </label>
+            ) : (
+              ''
+            )}
+
             <Field
               as="textarea"
               name="comment"

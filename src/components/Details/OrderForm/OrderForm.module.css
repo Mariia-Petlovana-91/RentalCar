@@ -48,9 +48,10 @@
 }
 
 .calendarToggleBtn {
-  width: 80%;
+  max-width: 100%;
+  min-width: 80%;
   height: 28px;
-  text-align: end;
+  text-align: start;
   padding: 0;
 }
 
