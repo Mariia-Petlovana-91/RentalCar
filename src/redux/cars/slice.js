@@ -3,16 +3,17 @@ import {
   getBrandsThunk,
   getCarByIdThunk,
   getCarsThunk,
-  getCarsMoreThunk,
 } from './operation';
 
 const INITIAL_STATE = {
   cars: [],
   totalPages: 0,
   car: null,
-  brands: null,
+  brands: [],
   isLoading: false,
   error: false,
+  page: 0,
+  price: ['30', '40', '50', '60', '70', '80', '90', '100', '110'],
 };
 
 const carsSlice = createSlice({
@@ -22,13 +23,23 @@ const carsSlice = createSlice({
     clearCars: (state) => {
       state.cars = [];
       state.totalPages = 0;
+      state.page = 0;
     },
   },
 
   extraReducers: (builder) => {
     builder
+      .addCase(getBrandsThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(getBrandsThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.brands = action.payload;
+      })
+      .addCase(getBrandsThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
       })
 
       .addCase(getCarsThunk.pending, (state) => {
@@ -37,7 +48,16 @@ const carsSlice = createSlice({
       })
       .addCase(getCarsThunk.fulfilled, (state, action) => {
         state.isLoading = false;
-        state.cars = [...state.cars, ...action.payload.cars];
+        if (
+          action.payload.page !== 1 &&
+          state.page !== action.payload.page
+        ) {
+          state.cars = [...state.cars, ...action.payload.cars];
+        } else {
+          state.cars = action.payload.cars;
+        }
+
+        state.page = action.payload.page;
         state.totalPages = action.payload.totalPages;
       })
       .addCase(getCarsThunk.rejected, (state, action) => {
@@ -45,8 +65,17 @@ const carsSlice = createSlice({
         state.error = action.payload;
       })
 
+      .addCase(getCarByIdThunk.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
       .addCase(getCarByIdThunk.fulfilled, (state, action) => {
+        state.isLoading = false;
         state.car = action.payload;
+      })
+      .addCase(getCarByIdThunk.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload.error;
       });
   },
 });

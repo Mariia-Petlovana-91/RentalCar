@@ -5,8 +5,7 @@ import CarItem from './CarItem/CarItem';
 const CarsList = ({ array }) => {
   return (
     <ul className={css.carList}>
-      {Array.isArray(array) &&
-        array.length !== 0 &&
+      {array.length !== 0 &&
         array.map((ar) => (
           <li className={css.carItem} key={ar.id}>
             <CarItem

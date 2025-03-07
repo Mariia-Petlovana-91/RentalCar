@@ -1,10 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from 'react-router-dom';
 import {
   getCarsThunk,
   getBrandsThunk,
-  getCarsMoreThunk,
 } from '../../redux/cars/operation';
 
 import { setFilters } from '../../redux/filters/slice';
@@ -14,6 +13,7 @@ import {
   selectError,
   selectIsLoading,
   selectBrands,
+  selectPage,
 } from '../../redux/cars/selectors';
 
 import { clearCars } from '../../redux/cars/slice';
@@ -27,111 +27,55 @@ import LoadMore from '../../components/LoadMore/LoadMore';
 import NotItem from '../../components/NotItem/NotItem';
 import NothingFound from '../../components/NothingFound/NothingFound';
 
-// const CarsCatalog = () => {
-//   const dispatch = useDispatch();
-//   const [searchParams] = useSearchParams();
-//   const [page, setPage] = useState(1);
-
-//   const brands = useSelector(selectBrands);
-//   const cars = useSelector(selectCars);
-//   const totalPages = useSelector(selectTotalPages);
-//   const isLoading = useSelector(selectIsLoading);
-//   const isError = useSelector(selectError);
-
-//   // Запит брендів один раз при завантаженні сторінки
-//   useEffect(() => {
-//     dispatch(getBrandsThunk());
-//   }, [dispatch]);
-
-//   // Запит при зміні фільтрів (searchParams)
-//   useEffect(() => {
-//     const filters = Object.fromEntries([...searchParams]);
-
-//     dispatch(setFilters(filters));
-//     dispatch(clearCars()); // Очищаємо список авто при зміні фільтрів
-//     setPage(1); // Обов'язково скидаємо сторінку!
-
-//     dispatch(getCarsThunk({ ...filters, page: 1 }));
-//     console.log('CAR');
-//   }, [dispatch, searchParams]);
-
-//   function onLoadMore() {
-//     event.preventDefault();
-//     const nextPage = page + 1;
-//     console.log('Load More запит:', {
-//       filters: Object.fromEntries([...searchParams]),
-//       page: nextPage,
-//     });
-
-//     dispatch(
-//       getCarsMoreThunk({
-//         ...Object.fromEntries([...searchParams]),
-//         page: nextPage,
-//       }),
-//     );
-
-//     setPage(nextPage);
-//   }
-
-//   return (
-//     <Section>
-//       <Container>
-//         {isLoading && <Loader />}
-//         {!isLoading && isError && <NothingFound error={isError} />}
-//         {!isLoading && !isError && (
-//           <>
-//             <SearchForm brands={brands} />
-//             <CarsList array={cars} />
-
-// {cars.length === 0 ? (
-//   <NotItem />
-// ) : (
-//   page < totalPages && <LoadMore onClick={onLoadMore} />
-// )}
-//           </>
-//         )}
-//       </Container>
-//     </Section>
-//   );
-// };
-
-// export default CarsCatalog;
-
 const CarsCatalog = () => {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
-  const [page, setPage] = useState(1);
-
+  const actualPage = useSelector(selectPage);
   const brands = useSelector(selectBrands);
   const cars = useSelector(selectCars);
   const totalPages = useSelector(selectTotalPages);
   const isLoading = useSelector(selectIsLoading);
   const isError = useSelector(selectError);
+  const page = Number(actualPage);
 
   useEffect(() => {
-    dispatch(getCarsThunk({ page: 1 }));
+    dispatch(getCarsThunk({ page: +1 }));
     dispatch(getBrandsThunk());
   }, [dispatch]);
 
+  useEffect(() => {
+    const filters = Object.fromEntries([...searchParams]);
+
+    dispatch(setFilters(filters));
+    dispatch(clearCars());
+
+    dispatch(getCarsThunk({ ...filters }));
+  }, [dispatch, searchParams]);
+
   const onLoadMore = () => {
     const nextPage = page + 1;
-    console.log(`Завантажуємо сторінку: ${nextPage}`);
-
     dispatch(getCarsThunk({ page: nextPage }));
-    setPage(nextPage);
   };
 
   return (
     <Section>
       <Container>
         {isLoading && <Loader />}
-        {!isLoading && isError && <NothingFound error={isError} />}
-        <SearchForm brands={brands} />
-        <CarsList array={cars} />
-        {cars.length === 0 ? (
-          <NotItem />
+        {isError ? (
+          <NothingFound error={isError} />
         ) : (
-          page < totalPages && <LoadMore onClick={onLoadMore} />
+          <>
+            {brands.length > 0 ? (
+              <SearchForm brands={brands} />
+            ) : null}
+
+            <CarsList array={cars} />
+            {page < totalPages ? (
+              <LoadMore onClick={onLoadMore} />
+            ) : (
+              <NotItem />
+            )}
+          </>
         )}
       </Container>
     </Section>

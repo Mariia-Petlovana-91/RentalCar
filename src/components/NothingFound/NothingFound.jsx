@@ -1,6 +1,8 @@
+import clsx from 'clsx';
+
 const NothingFound = ({ error }) => {
   return (
-    <div className="nothingContainer">
+    <div className={clsx('nothingContainer', 'flex')}>
       <p className="nothingText">
         🤷‍♂️ Sorry... an error occurred, or nothing found. Try again
         later, or contact support.

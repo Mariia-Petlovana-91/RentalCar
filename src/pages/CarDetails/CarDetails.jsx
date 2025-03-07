@@ -30,8 +30,12 @@ const CarDetails = () => {
     <Section>
       <Container>
         {isLoading && <Loader />}
-        {!isLoading && isError && <NothingFound error={isError} />}
-        {!isLoading && !isError && car && <Details {...car} />}
+
+        {!isLoading && !isError && car ? (
+          <Details {...car} />
+        ) : (
+          <NothingFound error={isError} />
+        )}
       </Container>
     </Section>
   );
